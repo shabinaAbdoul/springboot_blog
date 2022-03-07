@@ -1,0 +1,14 @@
+<!-- Appel fragment header -->
+	<div th:replace="fragments/header::header"></div>
+        
+    <div class="container">
+       
+    	<h3>Detail article: <span th:text="${article.titre}" /> </h3>
+    	<p th:text="${article.resume}"></p>
+    	
+    	<p >Auteur:
+    		<b th:text="${article.user} ? ${article.user.prenom} : 'Inconnu' "></b>
+    	</p>
+    	
+    	
+        </div>

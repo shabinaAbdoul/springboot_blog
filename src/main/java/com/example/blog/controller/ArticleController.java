@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.blog.model.Article;
@@ -72,4 +73,16 @@ public class ArticleController {
         return "article/list";
 		
 	}
+	
+	//edit articles
+	
+		@GetMapping("show/{id}")
+		public String show(@PathVariable(value="id") Long articleId, Model model) {
+
+	        model.addAttribute("article", articleService.findById(articleId).get());
+	       // model.addAttribute("getName", userServices.getCurrentUsername());
+
+	        return "article/show";
+			
+		}
 }
