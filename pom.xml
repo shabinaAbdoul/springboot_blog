@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<start-class>com.example.blog.BlogApplication</start-class>
 	</properties>
 
 	<dependencies>

@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.blog.model.Article;
+import com.example.blog.model.Commentaire;
 import com.example.blog.model.User;
 import com.example.blog.model.UserLogin;
 import com.example.blog.repository.UserRepository;
 import com.example.blog.services.ArticleService;
+import com.example.blog.services.CommentService;
 
 @Controller
 public class ArticleController {
@@ -25,6 +27,9 @@ public class ArticleController {
 	private ArticleService articleService;
 	
 	@Autowired UserRepository userRepository;
+	
+	@Autowired
+	private CommentService commentServ;
 	
 	@GetMapping("/ajout-article")
 	public String ajout(Model model) {
@@ -82,6 +87,11 @@ public class ArticleController {
 	        model.addAttribute("article", articleService.findById(articleId).get());
 	       // model.addAttribute("getName", userServices.getCurrentUsername());
 
+	        //SHOW COMMENTAIRES
+	        List<Commentaire> comments = commentServ.findAll();
+
+	        model.addAttribute("comments", comments);
+	        
 	        return "article/show";
 			
 		}
